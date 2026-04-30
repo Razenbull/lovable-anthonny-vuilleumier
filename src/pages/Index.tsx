@@ -316,10 +316,10 @@ const Index = () => {
               Follow Us
             </p>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
-              @maisonhome
+              @lumiere.portraits
             </h2>
             <p className="text-muted-foreground max-w-md mx-auto">
-              Join our community and get inspired by curated spaces and behind-the-scenes moments.
+              Field notes, contact sheets, and portraits from the road.
             </p>
           </motion.div>
 
