@@ -88,21 +88,21 @@ const About = () => {
                 The Beginning
               </p>
               <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-8 leading-tight">
-                A Personal Quest
+                One Camera,
                 <br />
-                <span className="italic">for Meaning</span>
+                <span className="italic">One Question</span>
               </h3>
               <p className="text-muted-foreground leading-[1.8] mb-5">
-                Maison began as a personal quest—a search for objects that felt
-                meaningful in an age of disposable everything. After years of
-                collecting and curating, we opened our doors to share these
-                discoveries with others who value craftsmanship over convenience.
+                I started with a single medium-format camera and a question I
+                couldn't put down: what does a face look like when nothing is
+                being asked of it? That question has carried me to the Omo Valley,
+                the Altai mountains, the high Andes, and the deserts of Namibia.
               </p>
               <p className="text-muted-foreground leading-[1.8]">
-                What started as a small collection has grown into a carefully
-                edited selection of home goods and lifestyle pieces, each chosen
-                for its ability to bring warmth, texture, and intention to the
-                spaces we inhabit.
+                Every shoot begins with weeks of letters, introductions and tea.
+                I work with a translator and an elder of the community. No frame
+                is ever made without consent, and no print is ever sold without
+                a portion returning to the people who made it possible.
               </p>
             </motion.div>
             <motion.div
