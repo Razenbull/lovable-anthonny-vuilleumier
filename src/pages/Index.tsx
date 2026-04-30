@@ -316,7 +316,7 @@ const Index = () => {
               Follow Us
             </p>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
-              @lumiere.portraits
+              @anthonny.vuilleumier
             </h2>
             <p className="text-muted-foreground max-w-md mx-auto">
               Field notes, contact sheets, and portraits from the road.
