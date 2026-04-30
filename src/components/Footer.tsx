@@ -14,10 +14,10 @@ export const Footer = () => {
                 to="/"
                 className="font-serif text-3xl md:text-4xl tracking-tight text-background"
               >
-                Maison
+                Lumière
               </Link>
               <p className="mt-3 text-sm text-background/50 leading-relaxed max-w-xs">
-                Curated home objects and lifestyle pieces for considered living.
+                Fine-art ethnic portraiture. Editioned, signed, hand-printed.
               </p>
             </div>
 
