@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useWishlist } from "@/hooks/useWishlist";
 import { CartIcon } from "@/components/CartIcon";
 import { collections } from "@/data/products";
+import logo from "@/assets/anthonny-vuilleumier-logo.png";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -47,9 +48,14 @@ export const Header = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="font-serif text-2xl md:text-3xl tracking-tight text-foreground hover:text-primary transition-colors duration-300"
+            aria-label="Anthonny Vuilleumier Photography — Home"
+            className="flex items-center hover:opacity-80 transition-opacity duration-300"
           >
-            Lumière
+            <img
+              src={logo}
+              alt="Anthonny Vuilleumier Photography"
+              className="h-10 md:h-14 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
