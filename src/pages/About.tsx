@@ -180,24 +180,23 @@ const About = () => {
               className="md:col-span-5"
             >
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-5">
-                Our Approach
+                The Practice
               </p>
               <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-8 leading-tight">
-                From Workshop
+                From Field
                 <br />
-                <span className="italic">to Home</span>
+                <span className="italic">to Print</span>
               </h3>
               <p className="text-muted-foreground leading-[1.8] mb-5">
-                Every piece in our collection passes through our hands before
-                reaching yours. We visit workshops, meet makers, and learn the
-                stories behind each object. This personal connection ensures that
-                what we offer isn't just beautiful—it's honest.
+                I shoot on medium format — slow, deliberate, with a tripod and
+                natural light. Most portraits are made between thirty and sixty
+                minutes after first light, or in the same window before sunset.
+                One sitter, one camera, no rush.
               </p>
               <p className="text-muted-foreground leading-[1.8]">
-                We prioritize natural materials, traditional techniques, and
-                makers who share our values. Whether it's a hand-thrown ceramic
-                vessel or a solid oak table built to last generations, we believe
-                in objects that get better with time, not worse.
+                Every print is made in the studio on archival cotton rag,
+                signed, numbered, and editioned by hand. Editions are small —
+                between ten and twenty-five — and once closed, they stay closed.
               </p>
             </motion.div>
           </div>
