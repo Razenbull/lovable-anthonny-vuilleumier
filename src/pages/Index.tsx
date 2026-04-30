@@ -168,7 +168,7 @@ const Index = () => {
                 Just Arrived
               </p>
               <h2 className="font-serif text-4xl md:text-5xl text-foreground">
-                Latest Products
+                New Work
               </h2>
             </motion.div>
             <Link
