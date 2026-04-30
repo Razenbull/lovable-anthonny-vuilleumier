@@ -39,8 +39,8 @@ export const Header = () => {
       className={cn(
         "sticky top-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-background/80 backdrop-blur-sm border-b border-transparent"
+          ? "bg-[hsl(35,38%,93%)] border-b border-border shadow-sm"
+          : "bg-[hsl(35,38%,94%)] border-b border-transparent"
       )}
     >
       <nav className="container-full">
