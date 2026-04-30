@@ -166,8 +166,8 @@ const About = () => {
             >
               <div className="aspect-[4/5] overflow-hidden group">
                 <img
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
-                  alt="Artisan hands at work"
+                  src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=80"
+                  alt="On location, the Altai mountains"
                   className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
                 />
               </div>
