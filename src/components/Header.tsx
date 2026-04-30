@@ -44,7 +44,7 @@ export const Header = () => {
       )}
     >
       <nav className="container-full">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-20 md:h-28">
           {/* Logo */}
           <Link
             to="/"
@@ -54,7 +54,7 @@ export const Header = () => {
             <img
               src={logo}
               alt="Anthonny Vuilleumier Photography"
-              className="h-10 md:h-14 w-auto object-contain"
+              className="h-16 md:h-24 w-auto object-contain"
             />
           </Link>
 

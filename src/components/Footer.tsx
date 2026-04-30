@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { collections } from "@/data/products";
+import logo from "@/assets/anthonny-vuilleumier-logo.png";
 
 export const Footer = () => {
   return (
@@ -10,11 +11,12 @@ export const Footer = () => {
         <div className="container-full py-12 md:py-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div>
-              <Link
-                to="/"
-                className="font-serif text-3xl md:text-4xl tracking-tight text-background"
-              >
-                Anthonny Vuilleumier
+              <Link to="/" aria-label="Anthonny Vuilleumier — Home" className="inline-block">
+                <img
+                  src={logo}
+                  alt="Anthonny Vuilleumier Photography"
+                  className="h-16 md:h-20 w-auto object-contain brightness-0 invert"
+                />
               </Link>
               <p className="mt-3 text-sm text-background/50 leading-relaxed max-w-xs">
                 Fine-art ethnic portraiture. Editioned, signed, hand-printed.
