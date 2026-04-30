@@ -77,7 +77,7 @@ export const Footer = () => {
                   to="/products"
                   className="text-sm text-background/60 hover:text-background transition-colors duration-300"
                 >
-                  Shop All
+                  All Prints
                 </Link>
               </li>
               <li>
