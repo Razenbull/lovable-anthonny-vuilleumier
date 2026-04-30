@@ -46,8 +46,6 @@ const Index = () => {
             alt="Portrait of an elder — fine-art ethnic photography by Anthonny Vuilleumier"
             className="w-full h-full object-cover object-right"
           />
-          {/* Mobile: extra darkening for text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0908] via-[#0a0908]/70 to-transparent md:hidden" />
         </motion.div>
 
         <motion.div
