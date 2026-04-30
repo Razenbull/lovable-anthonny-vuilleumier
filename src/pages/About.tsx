@@ -224,22 +224,22 @@ const About = () => {
           <div className="grid md:grid-cols-3 gap-16 md:gap-12 lg:gap-20">
             {[
               {
-                title: "Craftsmanship",
+                title: "Consent",
                 number: "01",
                 description:
-                  "We champion the work of skilled hands—artisans who have honed their craft over years, creating objects with care and intention that machines cannot replicate.",
+                  "No frame is made without permission. Every shoot begins with introductions, time, and the understanding that the sitter can stop at any point.",
               },
               {
-                title: "Sustainability",
+                title: "Return",
                 number: "02",
                 description:
-                  "We choose natural materials that age gracefully and makers who respect the environment. Quality over quantity means less waste and more meaning.",
+                  "I go back. The same villages, the same families, season after season — bringing prints, news, and the relationships that make new work possible.",
               },
               {
-                title: "Slow Living",
+                title: "Reciprocity",
                 number: "03",
                 description:
-                  "In a world of constant acceleration, we believe in the beauty of pause. Our objects invite moments of calm and presence in daily life.",
+                  "A portion of every print sold returns to the communities photographed — for school fees, livestock, healthcare, or whatever is most needed that year.",
               },
             ].map((value, i) => (
               <motion.div
