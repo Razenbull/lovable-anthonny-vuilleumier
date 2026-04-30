@@ -305,7 +305,7 @@ const About = () => {
       <section className="py-28 md:py-40 relative overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
+            src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=1920&q=80"
             alt=""
             className="w-full h-full object-cover"
           />
@@ -320,22 +320,22 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-white/50 mb-5">
-              Let's Connect
+              Commissions & Prints
             </p>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
-              Have a Question?
+              Get in Touch
             </h2>
             <p className="text-white/60 mb-10 max-w-md mx-auto leading-relaxed">
-              We're always happy to discuss our pieces, our makers, or help you
-              find exactly what you're looking for.
+              For studio sittings, exhibition enquiries, larger print sizes, or
+              questions about a specific edition — please write directly.
             </p>
             <Button
               asChild
               size="lg"
               className="rounded-none px-12 py-6 text-sm tracking-[0.15em] uppercase bg-white text-charcoal hover:bg-white/90"
             >
-              <a href="mailto:hello@maison.com">
-                Get in Touch
+              <a href="mailto:studio@lumiere-portraits.com">
+                Write to the Studio
                 <ArrowRight className="ml-3 w-4 h-4" />
               </a>
             </Button>
