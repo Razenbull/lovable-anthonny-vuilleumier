@@ -49,7 +49,7 @@ export const Header = () => {
             to="/"
             className="font-serif text-2xl md:text-3xl tracking-tight text-foreground hover:text-primary transition-colors duration-300"
           >
-            Maison
+            Lumière
           </Link>
 
           {/* Desktop Navigation */}
@@ -58,7 +58,7 @@ export const Header = () => {
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="bg-transparent text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground">
-                    Collections
+                    Series
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-1 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -91,7 +91,7 @@ export const Header = () => {
               to="/products"
               className="text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline"
             >
-              Shop All
+              Prints
             </Link>
 
             <Link
@@ -192,7 +192,7 @@ export const Header = () => {
               <div className="py-8 space-y-6">
                 <div className="space-y-1">
                   <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-muted-foreground/50 px-2 mb-3">
-                    Collections
+                    Series
                   </p>
                   {collections.slice(0, 6).map((collection, i) => (
                     <motion.div
@@ -213,7 +213,7 @@ export const Header = () => {
                 </div>
                 <div className="pt-6 border-t border-border space-y-1">
                   {[
-                    { to: "/products", label: "Shop All" },
+                    { to: "/products", label: "Prints" },
                     { to: "/about", label: "About" },
                     { to: "/cart", label: "Shopping Bag" },
                   ].map((link, i) => (

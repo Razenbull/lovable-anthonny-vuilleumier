@@ -14,10 +14,10 @@ export const Footer = () => {
                 to="/"
                 className="font-serif text-3xl md:text-4xl tracking-tight text-background"
               >
-                Maison
+                Lumière
               </Link>
               <p className="mt-3 text-sm text-background/50 leading-relaxed max-w-xs">
-                Curated home objects and lifestyle pieces for considered living.
+                Fine-art ethnic portraiture. Editioned, signed, hand-printed.
               </p>
             </div>
 
@@ -50,7 +50,7 @@ export const Footer = () => {
           {/* Collections */}
           <div>
             <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
-              Collections
+              Series
             </h4>
             <ul className="space-y-3">
               {collections.slice(0, 6).map((collection) => (
@@ -77,7 +77,7 @@ export const Footer = () => {
                   to="/products"
                   className="text-sm text-background/60 hover:text-background transition-colors duration-300"
                 >
-                  Shop All
+                  All Prints
                 </Link>
               </li>
               <li>
@@ -160,7 +160,7 @@ export const Footer = () => {
       <div className="border-t border-background/10">
         <div className="container-full py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-background/30">
-            © {new Date().getFullYear()} Maison. All rights reserved.
+            © {new Date().getFullYear()} Lumière Portraits. All rights reserved.
           </p>
           <div className="flex gap-8">
             <a

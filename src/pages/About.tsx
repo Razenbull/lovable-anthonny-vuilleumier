@@ -19,8 +19,8 @@ const About = () => {
       <section ref={heroRef} className="relative h-[80vh] md:h-screen overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
           <img
-            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&q=80"
-            alt="Artisan workshop"
+            src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=1920&q=80"
+            alt="Photographer in the field"
             className="w-full h-[120%] object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-charcoal/20 via-charcoal/10 to-charcoal/50" />
@@ -33,16 +33,16 @@ const About = () => {
             transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-white/60 mb-5">
-              Our Story
+              The Photographer
             </p>
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white mb-6 leading-[0.9]">
-              Curating Beauty
+              Fifteen Years
               <br />
-              <span className="italic font-normal">for Living</span>
+              <span className="italic font-normal">on the Road</span>
             </h1>
             <p className="text-base md:text-lg text-white/70 max-w-lg leading-relaxed">
-              Objects made with care, materials that age gracefully,
-              and spaces that invite pause.
+              A practice built on patience, returning, and the belief that a face
+              is worth meeting twice before it is worth photographing once.
             </p>
           </motion.div>
         </div>
@@ -64,9 +64,9 @@ const About = () => {
               </span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.25] tracking-tight">
-              We believe that the objects we surround ourselves with should tell
-              stories, age beautifully, and bring quiet{" "}
-              <span className="italic">joy</span> to everyday moments.
+              I believe a portrait is a small act of co-authorship — that the
+              person in front of the camera is the one telling the{" "}
+              <span className="italic">story</span>.
             </h2>
           </motion.div>
         </div>
@@ -88,21 +88,21 @@ const About = () => {
                 The Beginning
               </p>
               <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-8 leading-tight">
-                A Personal Quest
+                One Camera,
                 <br />
-                <span className="italic">for Meaning</span>
+                <span className="italic">One Question</span>
               </h3>
               <p className="text-muted-foreground leading-[1.8] mb-5">
-                Maison began as a personal quest—a search for objects that felt
-                meaningful in an age of disposable everything. After years of
-                collecting and curating, we opened our doors to share these
-                discoveries with others who value craftsmanship over convenience.
+                I started with a single medium-format camera and a question I
+                couldn't put down: what does a face look like when nothing is
+                being asked of it? That question has carried me to the Omo Valley,
+                the Altai mountains, the high Andes, and the deserts of Namibia.
               </p>
               <p className="text-muted-foreground leading-[1.8]">
-                What started as a small collection has grown into a carefully
-                edited selection of home goods and lifestyle pieces, each chosen
-                for its ability to bring warmth, texture, and intention to the
-                spaces we inhabit.
+                Every shoot begins with weeks of letters, introductions and tea.
+                I work with a translator and an elder of the community. No frame
+                is ever made without consent, and no print is ever sold without
+                a portion returning to the people who made it possible.
               </p>
             </motion.div>
             <motion.div
@@ -132,11 +132,11 @@ const About = () => {
           >
             <div className="relative h-[50vh] md:h-[70vh] overflow-hidden group">
               <img
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80"
-                alt="Workshop detail"
+                src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1920&q=80"
+                alt="Portrait, desert light"
                 className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-charcoal/20" />
+              <div className="absolute inset-0 bg-charcoal/30" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
@@ -145,11 +145,11 @@ const About = () => {
                   transition={{ duration: 0.8, delay: 0.3 }}
                   className="font-serif text-3xl md:text-5xl lg:text-6xl text-white text-center max-w-3xl px-6 leading-tight"
                 >
-                  "Beauty lies in the
+                  "A face is worth
                   <br />
-                  <span className="italic">imperfection</span>
+                  <span className="italic">meeting twice</span>
                   <br />
-                  of things made by hand"
+                  before photographing once"
                 </motion.p>
               </div>
             </div>
@@ -166,8 +166,8 @@ const About = () => {
             >
               <div className="aspect-[4/5] overflow-hidden group">
                 <img
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
-                  alt="Artisan hands at work"
+                  src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=80"
+                  alt="On location, the Altai mountains"
                   className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
                 />
               </div>
@@ -180,24 +180,23 @@ const About = () => {
               className="md:col-span-5"
             >
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-5">
-                Our Approach
+                The Practice
               </p>
               <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-8 leading-tight">
-                From Workshop
+                From Field
                 <br />
-                <span className="italic">to Home</span>
+                <span className="italic">to Print</span>
               </h3>
               <p className="text-muted-foreground leading-[1.8] mb-5">
-                Every piece in our collection passes through our hands before
-                reaching yours. We visit workshops, meet makers, and learn the
-                stories behind each object. This personal connection ensures that
-                what we offer isn't just beautiful—it's honest.
+                I shoot on medium format — slow, deliberate, with a tripod and
+                natural light. Most portraits are made between thirty and sixty
+                minutes after first light, or in the same window before sunset.
+                One sitter, one camera, no rush.
               </p>
               <p className="text-muted-foreground leading-[1.8]">
-                We prioritize natural materials, traditional techniques, and
-                makers who share our values. Whether it's a hand-thrown ceramic
-                vessel or a solid oak table built to last generations, we believe
-                in objects that get better with time, not worse.
+                Every print is made in the studio on archival cotton rag,
+                signed, numbered, and editioned by hand. Editions are small —
+                between ten and twenty-five — and once closed, they stay closed.
               </p>
             </motion.div>
           </div>
@@ -225,22 +224,22 @@ const About = () => {
           <div className="grid md:grid-cols-3 gap-16 md:gap-12 lg:gap-20">
             {[
               {
-                title: "Craftsmanship",
+                title: "Consent",
                 number: "01",
                 description:
-                  "We champion the work of skilled hands—artisans who have honed their craft over years, creating objects with care and intention that machines cannot replicate.",
+                  "No frame is made without permission. Every shoot begins with introductions, time, and the understanding that the sitter can stop at any point.",
               },
               {
-                title: "Sustainability",
+                title: "Return",
                 number: "02",
                 description:
-                  "We choose natural materials that age gracefully and makers who respect the environment. Quality over quantity means less waste and more meaning.",
+                  "I go back. The same villages, the same families, season after season — bringing prints, news, and the relationships that make new work possible.",
               },
               {
-                title: "Slow Living",
+                title: "Reciprocity",
                 number: "03",
                 description:
-                  "In a world of constant acceleration, we believe in the beauty of pause. Our objects invite moments of calm and presence in daily life.",
+                  "A portion of every print sold returns to the communities photographed — for school fees, livestock, healthcare, or whatever is most needed that year.",
               },
             ].map((value, i) => (
               <motion.div
@@ -272,16 +271,16 @@ const About = () => {
         <div className="grid grid-cols-3 gap-2 md:gap-4 h-[35vh] md:h-[50vh]">
           {[
             {
-              src: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&q=80",
-              alt: "Handcrafted ceramics",
+              src: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800&q=80",
+              alt: "Maasai portrait",
             },
             {
-              src: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80",
-              alt: "Styled living space",
+              src: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=800&q=80",
+              alt: "Himba portrait",
             },
             {
-              src: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=800&q=80",
-              alt: "Artisan textiles",
+              src: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80",
+              alt: "Mongolian eagle hunter",
             },
           ].map((img, i) => (
             <motion.div
@@ -306,7 +305,7 @@ const About = () => {
       <section className="py-28 md:py-40 relative overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
+            src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=1920&q=80"
             alt=""
             className="w-full h-full object-cover"
           />
@@ -321,22 +320,22 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-white/50 mb-5">
-              Let's Connect
+              Commissions & Prints
             </p>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
-              Have a Question?
+              Get in Touch
             </h2>
             <p className="text-white/60 mb-10 max-w-md mx-auto leading-relaxed">
-              We're always happy to discuss our pieces, our makers, or help you
-              find exactly what you're looking for.
+              For studio sittings, exhibition enquiries, larger print sizes, or
+              questions about a specific edition — please write directly.
             </p>
             <Button
               asChild
               size="lg"
               className="rounded-none px-12 py-6 text-sm tracking-[0.15em] uppercase bg-white text-charcoal hover:bg-white/90"
             >
-              <a href="mailto:hello@maison.com">
-                Get in Touch
+              <a href="mailto:studio@lumiere-portraits.com">
+                Write to the Studio
                 <ArrowRight className="ml-3 w-4 h-4" />
               </a>
             </Button>

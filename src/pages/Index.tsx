@@ -21,14 +21,14 @@ const Index = () => {
   const heroImageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  // Instagram placeholder images
+  // Instagram placeholder images — recent field work
   const instagramImages = [
-    "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&q=80",
-    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=400&q=80",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80",
-    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80",
-    "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&q=80",
-    "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400&q=80",
+    "https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=400&q=80",
+    "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&q=80",
+    "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=400&q=80",
+    "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=400&q=80",
+    "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=80",
+    "https://images.unsplash.com/photo-1531179829398-820e0fbcd95d?w=400&q=80",
   ];
 
   return (
@@ -37,8 +37,8 @@ const Index = () => {
       <section ref={heroRef} className="relative h-[100svh] -mt-16 md:-mt-20 overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
           <img
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80"
-            alt="Curated home lifestyle"
+            src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=1920&q=80"
+            alt="Maasai warrior portrait at dusk"
             className="w-full h-[120%] object-cover animate-ken-burns"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-charcoal/30 via-charcoal/10 to-charcoal/50" />
@@ -60,16 +60,16 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-[11px] font-semibold tracking-[0.3em] uppercase text-white/70 mb-6"
             >
-              Curated for Considered Living
+              Ethnic Portrait Photography
             </motion.p>
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-white mb-8 leading-[0.9] tracking-tight">
-              Objects of
+              Faces of
               <br />
-              <span className="italic font-normal">Quiet Beauty</span>
+              <span className="italic font-normal">a Quiet Earth</span>
             </h1>
             <p className="text-base md:text-lg text-white/80 mb-10 leading-relaxed max-w-lg">
-              Handcrafted home goods and lifestyle pieces designed to bring
-              warmth and intention to everyday moments.
+              Fine-art portraits from the world's most enduring cultures —
+              photographed slowly, printed by hand, editioned in the studio.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
@@ -78,7 +78,7 @@ const Index = () => {
                 className="rounded-none px-10 py-6 text-sm tracking-[0.15em] uppercase btn-premium"
               >
                 <Link to="/products">
-                  Shop Now
+                  View the Portfolio
                   <ArrowRight className="ml-3 w-4 h-4" />
                 </Link>
               </Button>
@@ -130,14 +130,14 @@ const Index = () => {
               className="md:py-12"
             >
               <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-4">
-                Featured Collection
+                Featured Series
               </p>
               <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 leading-[0.95]">
                 {featuredCollection.name}
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-8 max-w-md">
-                {featuredCollection.description}. Discover sculptural forms that cast warmth and shadow, 
-                designed to transform any space into a sanctuary of light.
+                {featuredCollection.description}. A series made over multiple visits,
+                printed in small editions and signed by hand.
               </p>
               <Button
                 asChild
@@ -145,7 +145,7 @@ const Index = () => {
                 className="rounded-none px-10 py-6 text-sm tracking-[0.15em] uppercase btn-premium"
               >
                 <Link to={`/products?collection=${featuredCollection.slug}`}>
-                  Shop {featuredCollection.name}
+                  View {featuredCollection.name}
                   <ArrowRight className="ml-3 w-4 h-4" />
                 </Link>
               </Button>
@@ -168,7 +168,7 @@ const Index = () => {
                 Just Arrived
               </p>
               <h2 className="font-serif text-4xl md:text-5xl text-foreground">
-                Latest Products
+                New Work
               </h2>
             </motion.div>
             <Link
@@ -192,7 +192,7 @@ const Index = () => {
               variant="outline"
               className="rounded-none px-8 py-5 text-sm tracking-[0.15em] uppercase"
             >
-              <Link to="/products">View All Products</Link>
+              <Link to="/products">View All Prints</Link>
             </Button>
           </div>
         </div>
@@ -212,7 +212,7 @@ const Index = () => {
               Browse By
             </p>
             <h2 className="font-serif text-4xl md:text-5xl text-foreground">
-              Collections
+              The Series
             </h2>
           </motion.div>
 
@@ -275,17 +275,17 @@ const Index = () => {
             transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const }}
           >
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-6">
-              About Us
+              About the Photographer
             </p>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.3] mb-8">
-              We believe in the beauty of slow living—in objects made with care,
-              materials that age gracefully, and spaces that invite{" "}
-              <span className="italic">pause</span>.
+              I photograph the people the world is fastest to forget — slowly,
+              with permission, and with the patience a face{" "}
+              <span className="italic">deserves</span>.
             </h2>
             <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-10">
-              Every piece in our collection is selected for its material integrity, 
-              its maker's story, and its ability to endure beautifully. We work with 
-              artisans who share our commitment to craft and sustainability.
+              Fifteen years of fieldwork across four continents, working with elders
+              and translators, returning to the same villages season after season.
+              Every print sold contributes to the communities that made it possible.
             </p>
             <Button
               asChild
@@ -316,10 +316,10 @@ const Index = () => {
               Follow Us
             </p>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
-              @maisonhome
+              @lumiere.portraits
             </h2>
             <p className="text-muted-foreground max-w-md mx-auto">
-              Join our community and get inspired by curated spaces and behind-the-scenes moments.
+              Field notes, contact sheets, and portraits from the road.
             </p>
           </motion.div>
 
