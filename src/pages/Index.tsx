@@ -275,17 +275,17 @@ const Index = () => {
             transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const }}
           >
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-6">
-              About Us
+              About the Photographer
             </p>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.3] mb-8">
-              We believe in the beauty of slow living—in objects made with care,
-              materials that age gracefully, and spaces that invite{" "}
-              <span className="italic">pause</span>.
+              I photograph the people the world is fastest to forget — slowly,
+              with permission, and with the patience a face{" "}
+              <span className="italic">deserves</span>.
             </h2>
             <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-10">
-              Every piece in our collection is selected for its material integrity, 
-              its maker's story, and its ability to endure beautifully. We work with 
-              artisans who share our commitment to craft and sustainability.
+              Fifteen years of fieldwork across four continents, working with elders
+              and translators, returning to the same villages season after season.
+              Every print sold contributes to the communities that made it possible.
             </p>
             <Button
               asChild
