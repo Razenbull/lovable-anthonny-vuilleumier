@@ -37,8 +37,8 @@ const Index = () => {
       <section ref={heroRef} className="relative h-[100svh] -mt-16 md:-mt-20 overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
           <img
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80"
-            alt="Curated home lifestyle"
+            src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=1920&q=80"
+            alt="Maasai warrior portrait at dusk"
             className="w-full h-[120%] object-cover animate-ken-burns"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-charcoal/30 via-charcoal/10 to-charcoal/50" />
