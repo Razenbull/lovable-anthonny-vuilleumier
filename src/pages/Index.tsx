@@ -192,7 +192,7 @@ const Index = () => {
               variant="outline"
               className="rounded-none px-8 py-5 text-sm tracking-[0.15em] uppercase"
             >
-              <Link to="/products">View All Products</Link>
+              <Link to="/products">View All Prints</Link>
             </Button>
           </div>
         </div>
