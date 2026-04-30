@@ -37,19 +37,17 @@ const Index = () => {
       {/* Hero Section — Full Viewport */}
       <section ref={heroRef} className="relative h-[100svh] -mt-20 md:-mt-28 overflow-hidden bg-[#000]">
         {/* Subtle ambient glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,rgba(166,97,58,0.18),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_50%,rgba(166,97,58,0.15),transparent_65%)] z-10 pointer-events-none" />
 
-        {/* Right-aligned portrait */}
-        <motion.div className="absolute inset-y-0 right-0 w-full md:w-[55%] lg:w-[50%]" style={{ y: heroImageY }}>
+        {/* Full-bleed landscape portrait (blend baked into image) */}
+        <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
           <img
             src={heroPortrait}
             alt="Portrait of an elder — fine-art ethnic photography by Anthonny Vuilleumier"
             className="w-full h-full object-cover object-right"
           />
-          {/* Fade portrait into dark background on the left edge */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0908] via-[#0a0908]/60 to-transparent md:via-[#0a0908]/30 md:to-transparent" />
           {/* Mobile: extra darkening for text legibility */}
-          <div className="absolute inset-0 bg-[#0a0908]/40 md:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0908] via-[#0a0908]/70 to-transparent md:hidden" />
         </motion.div>
 
         <motion.div
