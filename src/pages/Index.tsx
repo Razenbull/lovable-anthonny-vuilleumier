@@ -212,7 +212,7 @@ const Index = () => {
               Browse By
             </p>
             <h2 className="font-serif text-4xl md:text-5xl text-foreground">
-              Collections
+              The Series
             </h2>
           </motion.div>
 
