@@ -132,11 +132,11 @@ const About = () => {
           >
             <div className="relative h-[50vh] md:h-[70vh] overflow-hidden group">
               <img
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80"
-                alt="Workshop detail"
+                src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1920&q=80"
+                alt="Portrait, desert light"
                 className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-charcoal/20" />
+              <div className="absolute inset-0 bg-charcoal/30" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
@@ -145,11 +145,11 @@ const About = () => {
                   transition={{ duration: 0.8, delay: 0.3 }}
                   className="font-serif text-3xl md:text-5xl lg:text-6xl text-white text-center max-w-3xl px-6 leading-tight"
                 >
-                  "Beauty lies in the
+                  "A face is worth
                   <br />
-                  <span className="italic">imperfection</span>
+                  <span className="italic">meeting twice</span>
                   <br />
-                  of things made by hand"
+                  before photographing once"
                 </motion.p>
               </div>
             </div>
