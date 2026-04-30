@@ -271,16 +271,16 @@ const About = () => {
         <div className="grid grid-cols-3 gap-2 md:gap-4 h-[35vh] md:h-[50vh]">
           {[
             {
-              src: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&q=80",
-              alt: "Handcrafted ceramics",
+              src: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800&q=80",
+              alt: "Maasai portrait",
             },
             {
-              src: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80",
-              alt: "Styled living space",
+              src: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=800&q=80",
+              alt: "Himba portrait",
             },
             {
-              src: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=800&q=80",
-              alt: "Artisan textiles",
+              src: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80",
+              alt: "Mongolian eagle hunter",
             },
           ].map((img, i) => (
             <motion.div
