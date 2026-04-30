@@ -33,16 +33,16 @@ const About = () => {
             transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-white/60 mb-5">
-              Our Story
+              The Photographer
             </p>
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white mb-6 leading-[0.9]">
-              Curating Beauty
+              Fifteen Years
               <br />
-              <span className="italic font-normal">for Living</span>
+              <span className="italic font-normal">on the Road</span>
             </h1>
             <p className="text-base md:text-lg text-white/70 max-w-lg leading-relaxed">
-              Objects made with care, materials that age gracefully,
-              and spaces that invite pause.
+              A practice built on patience, returning, and the belief that a face
+              is worth meeting twice before it is worth photographing once.
             </p>
           </motion.div>
         </div>
