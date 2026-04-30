@@ -7,6 +7,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { CollectionCard } from "@/components/CollectionCard";
 import { collections, getNewProducts, products } from "@/data/products";
 import { Button } from "@/components/ui/button";
+import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const Index = () => {
   const newProducts = getNewProducts();
@@ -34,25 +35,35 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section — Full Viewport */}
-      <section ref={heroRef} className="relative h-[100svh] -mt-16 md:-mt-20 overflow-hidden">
-        <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
+      <section ref={heroRef} className="relative h-[100svh] -mt-20 md:-mt-28 overflow-hidden bg-[#0a0908]">
+        {/* Subtle ambient glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,rgba(166,97,58,0.18),transparent_60%)]" />
+
+        {/* Right-aligned portrait */}
+        <motion.div
+          className="absolute inset-y-0 right-0 w-full md:w-[55%] lg:w-[50%]"
+          style={{ y: heroImageY }}
+        >
           <img
-            src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=1920&q=80"
-            alt="Maasai warrior portrait at dusk"
-            className="w-full h-[120%] object-cover animate-ken-burns"
+            src={heroPortrait}
+            alt="Portrait of an elder — fine-art ethnic photography by Anthonny Vuilleumier"
+            className="w-full h-full object-cover object-right"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/30 via-charcoal/10 to-charcoal/50" />
+          {/* Fade portrait into dark background on the left edge */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0908] via-[#0a0908]/60 to-transparent md:via-[#0a0908]/30 md:to-transparent" />
+          {/* Mobile: extra darkening for text legibility */}
+          <div className="absolute inset-0 bg-[#0a0908]/40 md:hidden" />
         </motion.div>
 
         <motion.div
-          className="relative container-full h-full flex flex-col justify-end pb-20 md:pb-28 pt-16 md:pt-20"
+          className="relative container-full h-full flex flex-col justify-center pt-20 md:pt-28"
           style={{ opacity: heroOpacity }}
         >
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] as const }}
-            className="max-w-3xl"
+            className="max-w-2xl"
           >
             <motion.p
               initial={{ opacity: 0 }}
@@ -62,12 +73,12 @@ const Index = () => {
             >
               Ethnic Portrait Photography
             </motion.p>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-white mb-8 leading-[0.9] tracking-tight">
-              Faces of
+            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white mb-8 leading-[0.95] tracking-tight">
+              Explore the world,
               <br />
-              <span className="italic font-normal">a Quiet Earth</span>
+              <span className="italic font-normal">capture the instant</span>
             </h1>
-            <p className="text-base md:text-lg text-white/80 mb-10 leading-relaxed max-w-lg">
+            <p className="text-base md:text-lg text-white/75 mb-10 leading-relaxed max-w-lg">
               Fine-art portraits from the world's most enduring cultures —
               photographed slowly, printed by hand, editioned in the studio.
             </p>
