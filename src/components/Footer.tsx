@@ -50,7 +50,7 @@ export const Footer = () => {
           {/* Collections */}
           <div>
             <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
-              Collections
+              Series
             </h4>
             <ul className="space-y-3">
               {collections.slice(0, 6).map((collection) => (
