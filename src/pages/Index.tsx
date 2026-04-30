@@ -21,14 +21,14 @@ const Index = () => {
   const heroImageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  // Instagram placeholder images
+  // Instagram placeholder images — recent field work
   const instagramImages = [
-    "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&q=80",
-    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=400&q=80",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80",
-    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80",
-    "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&q=80",
-    "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=400&q=80",
+    "https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=400&q=80",
+    "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&q=80",
+    "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=400&q=80",
+    "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=400&q=80",
+    "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=80",
+    "https://images.unsplash.com/photo-1531179829398-820e0fbcd95d?w=400&q=80",
   ];
 
   return (
