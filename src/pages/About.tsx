@@ -64,9 +64,9 @@ const About = () => {
               </span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.25] tracking-tight">
-              We believe that the objects we surround ourselves with should tell
-              stories, age beautifully, and bring quiet{" "}
-              <span className="italic">joy</span> to everyday moments.
+              I believe a portrait is a small act of co-authorship — that the
+              person in front of the camera is the one telling the{" "}
+              <span className="italic">story</span>.
             </h2>
           </motion.div>
         </div>
