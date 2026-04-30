@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useWishlist } from "@/hooks/useWishlist";
 import { CartIcon } from "@/components/CartIcon";
 import { collections } from "@/data/products";
+import logo from "@/assets/anthonny-vuilleumier-logo.png";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -38,18 +39,23 @@ export const Header = () => {
       className={cn(
         "sticky top-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-background/80 backdrop-blur-sm border-b border-transparent"
+          ? "bg-[hsl(35,38%,93%)] border-b border-border shadow-sm"
+          : "bg-[hsl(35,38%,94%)] border-b border-transparent"
       )}
     >
       <nav className="container-full">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-20 md:h-28">
           {/* Logo */}
           <Link
             to="/"
-            className="font-serif text-2xl md:text-3xl tracking-tight text-foreground hover:text-primary transition-colors duration-300"
+            aria-label="Anthonny Vuilleumier Photography — Home"
+            className="flex items-center hover:opacity-80 transition-opacity duration-300"
           >
-            Lumière
+            <img
+              src={logo}
+              alt="Anthonny Vuilleumier Photography"
+              className="h-16 md:h-24 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}

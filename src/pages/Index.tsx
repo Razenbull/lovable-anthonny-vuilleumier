@@ -7,6 +7,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { CollectionCard } from "@/components/CollectionCard";
 import { collections, getNewProducts, products } from "@/data/products";
 import { Button } from "@/components/ui/button";
+import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const Index = () => {
   const newProducts = getNewProducts();
@@ -34,25 +35,30 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section — Full Viewport */}
-      <section ref={heroRef} className="relative h-[100svh] -mt-16 md:-mt-20 overflow-hidden">
+      <section ref={heroRef} className="relative h-[100svh] -mt-20 md:-mt-28 overflow-hidden bg-[#000]">
+        {/* Subtle ambient glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_50%,rgba(166,97,58,0.15),transparent_65%)] z-10 pointer-events-none" />
+
+        {/* Full-bleed landscape portrait (blend baked into image) */}
         <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
           <img
-            src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=1920&q=80"
-            alt="Maasai warrior portrait at dusk"
-            className="w-full h-[120%] object-cover animate-ken-burns"
+            src={heroPortrait}
+            alt="Portrait of an elder — fine-art ethnic photography by Anthonny Vuilleumier"
+            className="w-full h-full object-cover object-right"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/30 via-charcoal/10 to-charcoal/50" />
+          {/* Mobile: extra darkening for text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0908] via-[#0a0908]/70 to-transparent md:hidden" />
         </motion.div>
 
         <motion.div
-          className="relative container-full h-full flex flex-col justify-end pb-20 md:pb-28 pt-16 md:pt-20"
+          className="relative container-full h-full flex flex-col justify-center pt-20 md:pt-28"
           style={{ opacity: heroOpacity }}
         >
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] as const }}
-            className="max-w-3xl"
+            className="max-w-2xl"
           >
             <motion.p
               initial={{ opacity: 0 }}
@@ -62,14 +68,14 @@ const Index = () => {
             >
               Ethnic Portrait Photography
             </motion.p>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-white mb-8 leading-[0.9] tracking-tight">
-              Faces of
+            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white mb-8 leading-[0.95] tracking-tight">
+              Explore the world,
               <br />
-              <span className="italic font-normal">a Quiet Earth</span>
+              <span className="italic font-normal">capture the instant</span>
             </h1>
-            <p className="text-base md:text-lg text-white/80 mb-10 leading-relaxed max-w-lg">
-              Fine-art portraits from the world's most enduring cultures —
-              photographed slowly, printed by hand, editioned in the studio.
+            <p className="text-base md:text-lg text-white/75 mb-10 leading-relaxed max-w-lg">
+              Fine-art portraits from the world's most enduring cultures — photographed slowly, printed by hand,
+              editioned in the studio.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
@@ -93,10 +99,7 @@ const Index = () => {
             className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           >
             <span className="text-[10px] tracking-[0.3em] uppercase text-white/50">Scroll</span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
               <ArrowDown className="w-4 h-4 text-white/50" />
             </motion.div>
           </motion.div>
@@ -129,15 +132,13 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] as const }}
               className="md:py-12"
             >
-              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-4">
-                Featured Series
-              </p>
+              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-4">Featured Series</p>
               <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 leading-[0.95]">
                 {featuredCollection.name}
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-8 max-w-md">
-                {featuredCollection.description}. A series made over multiple visits,
-                printed in small editions and signed by hand.
+                {featuredCollection.description}. A series made over multiple visits, printed in small editions and
+                signed by hand.
               </p>
               <Button
                 asChild
@@ -164,12 +165,8 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">
-                Just Arrived
-              </p>
-              <h2 className="font-serif text-4xl md:text-5xl text-foreground">
-                New Work
-              </h2>
+              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">Just Arrived</p>
+              <h2 className="font-serif text-4xl md:text-5xl text-foreground">New Work</h2>
             </motion.div>
             <Link
               to="/products"
@@ -187,11 +184,7 @@ const Index = () => {
           </div>
 
           <div className="mt-14 text-center md:hidden">
-            <Button
-              asChild
-              variant="outline"
-              className="rounded-none px-8 py-5 text-sm tracking-[0.15em] uppercase"
-            >
+            <Button asChild variant="outline" className="rounded-none px-8 py-5 text-sm tracking-[0.15em] uppercase">
               <Link to="/products">View All Prints</Link>
             </Button>
           </div>
@@ -208,58 +201,34 @@ const Index = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">
-              Browse By
-            </p>
-            <h2 className="font-serif text-4xl md:text-5xl text-foreground">
-              The Series
-            </h2>
+            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">Browse By</p>
+            <h2 className="font-serif text-4xl md:text-5xl text-foreground">The Series</h2>
           </motion.div>
 
           {/* Asymmetric grid layout */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
             {/* First row: 2 items */}
             <div className="md:col-span-7">
-              <CollectionCard
-                collection={displayedCollections[0]}
-                index={0}
-                variant="wide"
-              />
+              <CollectionCard collection={displayedCollections[0]} index={0} variant="wide" />
             </div>
             <div className="md:col-span-5">
-              <CollectionCard
-                collection={displayedCollections[1]}
-                index={1}
-              />
+              <CollectionCard collection={displayedCollections[1]} index={1} />
             </div>
 
             {/* Second row: 3 items */}
             <div className="md:col-span-4">
-              <CollectionCard
-                collection={displayedCollections[2]}
-                index={2}
-              />
+              <CollectionCard collection={displayedCollections[2]} index={2} />
             </div>
             <div className="md:col-span-4">
-              <CollectionCard
-                collection={displayedCollections[3]}
-                index={3}
-              />
+              <CollectionCard collection={displayedCollections[3]} index={3} />
             </div>
             <div className="md:col-span-4">
-              <CollectionCard
-                collection={displayedCollections[4]}
-                index={4}
-              />
+              <CollectionCard collection={displayedCollections[4]} index={4} />
             </div>
 
             {/* Third row: 1 wide item */}
             <div className="md:col-span-12">
-              <CollectionCard
-                collection={displayedCollections[5]}
-                index={5}
-                variant="wide"
-              />
+              <CollectionCard collection={displayedCollections[5]} index={5} variant="wide" />
             </div>
           </div>
         </div>
@@ -278,14 +247,12 @@ const Index = () => {
               About the Photographer
             </p>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.3] mb-8">
-              I photograph the people the world is fastest to forget — slowly,
-              with permission, and with the patience a face{" "}
-              <span className="italic">deserves</span>.
+              I photograph the people the world is fastest to forget — slowly, with permission, and with the patience a
+              face <span className="italic">deserves</span>.
             </h2>
             <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-10">
-              Fifteen years of fieldwork across four continents, working with elders
-              and translators, returning to the same villages season after season.
-              Every print sold contributes to the communities that made it possible.
+              Fifteen years of fieldwork across four continents, working with elders and translators, returning to the
+              same villages season after season. Every print sold contributes to the communities that made it possible.
             </p>
             <Button
               asChild
@@ -312,12 +279,8 @@ const Index = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">
-              Follow Us
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
-              @lumiere.portraits
-            </h2>
+            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">Follow Us</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">@anthonny.vuilleumier</h2>
             <p className="text-muted-foreground max-w-md mx-auto">
               Field notes, contact sheets, and portraits from the road.
             </p>

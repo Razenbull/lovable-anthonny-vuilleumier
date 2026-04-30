@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { collections } from "@/data/products";
+import logo from "@/assets/anthonny-vuilleumier-logo.png";
 
 export const Footer = () => {
   return (
@@ -10,11 +11,12 @@ export const Footer = () => {
         <div className="container-full py-12 md:py-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div>
-              <Link
-                to="/"
-                className="font-serif text-3xl md:text-4xl tracking-tight text-background"
-              >
-                Lumière
+              <Link to="/" aria-label="Anthonny Vuilleumier — Home" className="inline-block">
+                <img
+                  src={logo}
+                  alt="Anthonny Vuilleumier Photography"
+                  className="h-16 md:h-20 w-auto object-contain brightness-0 invert"
+                />
               </Link>
               <p className="mt-3 text-sm text-background/50 leading-relaxed max-w-xs">
                 Fine-art ethnic portraiture. Editioned, signed, hand-printed.
@@ -140,10 +142,10 @@ export const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:hello@maison.com"
+                  href="mailto:studio@anthonnyvuilleumier.com"
                   className="text-sm text-background/60 hover:text-background transition-colors duration-300"
                 >
-                  hello@maison.com
+                  studio@anthonnyvuilleumier.com
                 </a>
               </li>
               <li>
@@ -160,7 +162,7 @@ export const Footer = () => {
       <div className="border-t border-background/10">
         <div className="container-full py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-background/30">
-            © {new Date().getFullYear()} Lumière Portraits. All rights reserved.
+            © {new Date().getFullYear()} Anthonny Vuilleumier Photography. All rights reserved.
           </p>
           <div className="flex gap-8">
             <a

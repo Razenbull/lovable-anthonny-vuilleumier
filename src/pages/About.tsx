@@ -334,7 +334,7 @@ const About = () => {
               size="lg"
               className="rounded-none px-12 py-6 text-sm tracking-[0.15em] uppercase bg-white text-charcoal hover:bg-white/90"
             >
-              <a href="mailto:studio@lumiere-portraits.com">
+              <a href="mailto:studio@anthonnyvuilleumier.com">
                 Write to the Studio
                 <ArrowRight className="ml-3 w-4 h-4" />
               </a>
