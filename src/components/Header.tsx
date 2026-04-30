@@ -55,6 +55,10 @@ export const Header = () => {
               src={logo}
               alt="Anthonny Vuilleumier Photography"
               className="h-16 md:h-24 w-auto object-contain"
+              style={{
+                filter:
+                  "brightness(0) saturate(100%) invert(58%) sepia(45%) saturate(580%) hue-rotate(5deg) brightness(92%) contrast(88%)",
+              }}
             />
           </Link>
 
