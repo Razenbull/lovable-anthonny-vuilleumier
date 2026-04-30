@@ -60,16 +60,16 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-[11px] font-semibold tracking-[0.3em] uppercase text-white/70 mb-6"
             >
-              Curated for Considered Living
+              Ethnic Portrait Photography
             </motion.p>
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-white mb-8 leading-[0.9] tracking-tight">
-              Objects of
+              Faces of
               <br />
-              <span className="italic font-normal">Quiet Beauty</span>
+              <span className="italic font-normal">a Quiet Earth</span>
             </h1>
             <p className="text-base md:text-lg text-white/80 mb-10 leading-relaxed max-w-lg">
-              Handcrafted home goods and lifestyle pieces designed to bring
-              warmth and intention to everyday moments.
+              Fine-art portraits from the world's most enduring cultures —
+              photographed slowly, printed by hand, editioned in the studio.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
