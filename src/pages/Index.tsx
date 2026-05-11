@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
 import { CollectionCard } from "@/components/CollectionCard";
-import { collections, getNewProducts, products } from "@/data/products";
+import { useCollections, useProducts, getNewProducts } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import heroPortraitFallback from "@/assets/hero-portrait.jpg";
 import { getSiteSettings, urlFor, type SiteSettings } from "@/lib/sanity";
@@ -26,8 +26,11 @@ const Index = () => {
     queryFn: getSiteSettings,
   });
 
+  const { data: collections = [] } = useCollections();
+  const { data: products = [] } = useProducts();
+
   const s = settings ?? {};
-  const newProducts = getNewProducts();
+  const newProducts = getNewProducts(products);
   const latestProducts = products.slice(0, 4);
   const displayedCollections = collections.slice(0, 6);
   const featuredCollection = collections[0];
@@ -118,6 +121,7 @@ const Index = () => {
       </section>
 
       {/* Featured Collection */}
+      {featuredCollection && (
       <section className="py-20 md:py-28">
         <div className="container-full">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -167,6 +171,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+      )}
 
       {/* Latest Products */}
       <section className="py-20 md:py-28 bg-linen">

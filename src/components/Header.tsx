@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useWishlist } from "@/hooks/useWishlist";
 import { CartIcon } from "@/components/CartIcon";
-import { collections } from "@/data/products";
+import { useCollections } from "@/data/products";
 import logo from "@/assets/anthonny-vuilleumier-logo.png";
 import {
   NavigationMenu,
@@ -25,6 +25,7 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { items } = useWishlist();
+  const { data: collections = [] } = useCollections();
 
   useEffect(() => {
     const handleScroll = () => {
