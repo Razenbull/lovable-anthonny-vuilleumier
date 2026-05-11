@@ -228,24 +228,20 @@ const Index = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
-            <div className="md:col-span-7">
-              <CollectionCard collection={displayedCollections[0]} index={0} variant="wide" />
-            </div>
-            <div className="md:col-span-5">
-              <CollectionCard collection={displayedCollections[1]} index={1} />
-            </div>
-            <div className="md:col-span-4">
-              <CollectionCard collection={displayedCollections[2]} index={2} />
-            </div>
-            <div className="md:col-span-4">
-              <CollectionCard collection={displayedCollections[3]} index={3} />
-            </div>
-            <div className="md:col-span-4">
-              <CollectionCard collection={displayedCollections[4]} index={4} />
-            </div>
-            <div className="md:col-span-12">
-              <CollectionCard collection={displayedCollections[5]} index={5} variant="wide" />
-            </div>
+            {[
+              { span: "md:col-span-7", variant: "wide" as const },
+              { span: "md:col-span-5", variant: undefined },
+              { span: "md:col-span-4", variant: undefined },
+              { span: "md:col-span-4", variant: undefined },
+              { span: "md:col-span-4", variant: undefined },
+              { span: "md:col-span-12", variant: "wide" as const },
+            ].map((slot, i) =>
+              displayedCollections[i] ? (
+                <div key={displayedCollections[i].id} className={slot.span}>
+                  <CollectionCard collection={displayedCollections[i]} index={i} variant={slot.variant} />
+                </div>
+              ) : null
+            )}
           </div>
         </div>
       </section>
