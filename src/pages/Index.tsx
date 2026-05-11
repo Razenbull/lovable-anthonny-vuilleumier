@@ -2,18 +2,35 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ArrowDown, Instagram } from "lucide-react";
 import { useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
 import { CollectionCard } from "@/components/CollectionCard";
 import { collections, getNewProducts, products } from "@/data/products";
 import { Button } from "@/components/ui/button";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import heroPortraitFallback from "@/assets/hero-portrait.jpg";
+import { getSiteSettings, urlFor, type SiteSettings } from "@/lib/sanity";
+
+const FALLBACK_INSTAGRAM = [
+  "https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=400&q=80",
+  "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&q=80",
+  "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=400&q=80",
+  "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=400&q=80",
+  "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=80",
+  "https://images.unsplash.com/photo-1531179829398-820e0fbcd95d?w=400&q=80",
+];
 
 const Index = () => {
+  const { data: settings } = useQuery<SiteSettings | null>({
+    queryKey: ["siteSettings"],
+    queryFn: getSiteSettings,
+  });
+
+  const s = settings ?? {};
   const newProducts = getNewProducts();
   const latestProducts = products.slice(0, 4);
   const displayedCollections = collections.slice(0, 6);
-  const featuredCollection = collections[0]; // Lighting
+  const featuredCollection = collections[0];
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -22,28 +39,25 @@ const Index = () => {
   const heroImageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  // Instagram placeholder images — recent field work
-  const instagramImages = [
-    "https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=400&q=80",
-    "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&q=80",
-    "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=400&q=80",
-    "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=400&q=80",
-    "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=80",
-    "https://images.unsplash.com/photo-1531179829398-820e0fbcd95d?w=400&q=80",
-  ];
+  const heroImageUrl = s.heroImage
+    ? urlFor(s.heroImage).width(2000).auto("format").url()
+    : heroPortraitFallback;
+
+  const instagramImages =
+    s.instagramImages && s.instagramImages.length > 0
+      ? s.instagramImages.map((img) => urlFor(img).width(600).height(600).fit("crop").auto("format").url())
+      : FALLBACK_INSTAGRAM;
 
   return (
     <Layout>
       {/* Hero Section — Full Viewport */}
       <section ref={heroRef} className="relative h-[100svh] -mt-20 md:-mt-28 overflow-hidden bg-[#000]">
-        {/* Subtle ambient glow */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_50%,rgba(166,97,58,0.15),transparent_65%)] z-10 pointer-events-none" />
 
-        {/* Full-bleed landscape portrait (blend baked into image) */}
         <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
           <img
-            src={heroPortrait}
-            alt="Portrait of an elder — fine-art ethnic photography by Anthonny Vuilleumier"
+            src={heroImageUrl}
+            alt={`Portrait — fine-art ethnic photography by ${s.brandName ?? "Anthonny Vuilleumier"}`}
             className="w-full h-full object-cover object-right"
           />
         </motion.div>
@@ -64,16 +78,16 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-[11px] font-semibold tracking-[0.3em] uppercase text-white/70 mb-6"
             >
-              Ethnic Portrait Photography
+              {s.heroEyebrow ?? "Ethnic Portrait Photography"}
             </motion.p>
             <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white mb-8 leading-[0.95] tracking-tight">
-              Explore the world,
+              {s.heroHeadlineLine1 ?? "Explore the world,"}
               <br />
-              <span className="italic font-normal">capture the instant</span>
+              <span className="italic font-normal">{s.heroHeadlineLine2 ?? "capture the instant"}</span>
             </h1>
             <p className="text-base md:text-lg text-white/75 mb-10 leading-relaxed max-w-lg">
-              Fine-art portraits from the world's most enduring cultures — photographed slowly, printed by hand,
-              editioned in the studio.
+              {s.heroSubheadline ??
+                "Fine-art portraits from the world's most enduring cultures — photographed slowly, printed by hand, editioned in the studio."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
@@ -81,15 +95,14 @@ const Index = () => {
                 size="lg"
                 className="rounded-none px-10 py-6 text-sm tracking-[0.15em] uppercase btn-premium"
               >
-                <Link to="/products">
-                  View the Portfolio
+                <Link to={s.heroCtaHref ?? "/products"}>
+                  {s.heroCtaLabel ?? "View the Portfolio"}
                   <ArrowRight className="ml-3 w-4 h-4" />
                 </Link>
               </Button>
             </div>
           </motion.div>
 
-          {/* Scroll indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -130,7 +143,9 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] as const }}
               className="md:py-12"
             >
-              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-4">Featured Series</p>
+              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-4">
+                {s.featuredEyebrow ?? "Featured Series"}
+              </p>
               <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 leading-[0.95]">
                 {featuredCollection.name}
               </h2>
@@ -163,8 +178,10 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">Just Arrived</p>
-              <h2 className="font-serif text-4xl md:text-5xl text-foreground">New Work</h2>
+              <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">
+                {s.newWorkEyebrow ?? "Just Arrived"}
+              </p>
+              <h2 className="font-serif text-4xl md:text-5xl text-foreground">{s.newWorkHeadline ?? "New Work"}</h2>
             </motion.div>
             <Link
               to="/products"
@@ -199,21 +216,19 @@ const Index = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">Browse By</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-foreground">The Series</h2>
+            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">
+              {s.seriesEyebrow ?? "Browse By"}
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl text-foreground">{s.seriesHeadline ?? "The Series"}</h2>
           </motion.div>
 
-          {/* Asymmetric grid layout */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
-            {/* First row: 2 items */}
             <div className="md:col-span-7">
               <CollectionCard collection={displayedCollections[0]} index={0} variant="wide" />
             </div>
             <div className="md:col-span-5">
               <CollectionCard collection={displayedCollections[1]} index={1} />
             </div>
-
-            {/* Second row: 3 items */}
             <div className="md:col-span-4">
               <CollectionCard collection={displayedCollections[2]} index={2} />
             </div>
@@ -223,8 +238,6 @@ const Index = () => {
             <div className="md:col-span-4">
               <CollectionCard collection={displayedCollections[4]} index={4} />
             </div>
-
-            {/* Third row: 1 wide item */}
             <div className="md:col-span-12">
               <CollectionCard collection={displayedCollections[5]} index={5} variant="wide" />
             </div>
@@ -242,15 +255,15 @@ const Index = () => {
             transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const }}
           >
             <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-6">
-              About the Photographer
+              {s.aboutEyebrow ?? "About the Photographer"}
             </p>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.3] mb-8">
-              I photograph the people the world is fastest to forget — slowly, with permission, and with the patience a
-              face <span className="italic">deserves</span>.
+              {s.aboutHeadline ??
+                "I photograph the people the world is fastest to forget — slowly, with permission, and with the patience a face deserves."}
             </h2>
             <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-10">
-              Fifteen years of fieldwork across four continents, working with elders and translators, returning to the
-              same villages season after season. Every print sold contributes to the communities that made it possible.
+              {s.aboutBody ??
+                "Fifteen years of fieldwork across four continents, working with elders and translators, returning to the same villages season after season. Every print sold contributes to the communities that made it possible."}
             </p>
             <Button
               asChild
@@ -259,7 +272,7 @@ const Index = () => {
               className="rounded-none px-10 py-6 text-sm tracking-[0.15em] uppercase"
             >
               <Link to="/about">
-                Read Our Story
+                {s.aboutCtaLabel ?? "Read Our Story"}
                 <ArrowRight className="ml-3 w-4 h-4" />
               </Link>
             </Button>
@@ -277,19 +290,22 @@ const Index = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">Follow Us</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">@anthonny.vuilleumier</h2>
+            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-primary mb-3">
+              {s.instagramEyebrow ?? "Follow Us"}
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+              {s.instagramHandle ?? "@anthonny.vuilleumier"}
+            </h2>
             <p className="text-muted-foreground max-w-md mx-auto">
-              Field notes, contact sheets, and portraits from the road.
+              {s.instagramSubtitle ?? "Field notes, contact sheets, and portraits from the road."}
             </p>
           </motion.div>
 
-          {/* Instagram Grid */}
           <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4">
             {instagramImages.map((image, index) => (
               <motion.a
                 key={index}
-                href="https://instagram.com"
+                href={s.instagramUrl ?? "https://instagram.com"}
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.95 }}
