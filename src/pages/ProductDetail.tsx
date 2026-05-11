@@ -5,7 +5,7 @@ import { Heart, ChevronLeft, ChevronRight, ArrowRight, ShoppingBag } from "lucid
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
 import { QuantitySelector } from "@/components/QuantitySelector";
-import { getProductBySlug, getRelatedProducts, collections } from "@/data/products";
+import { getProductBySlug, getRelatedProducts, useCollections, useProducts } from "@/data/products";
 import { useWishlist } from "@/hooks/useWishlist";
 import { useCart } from "@/hooks/useCart";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,9 @@ import { cn } from "@/lib/utils";
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const product = getProductBySlug(slug || "");
+  const { data: products = [], isLoading } = useProducts();
+  const { data: collections = [] } = useCollections();
+  const product = getProductBySlug(products, slug || "");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlist();
@@ -22,6 +24,15 @@ const ProductDetail = () => {
   const { toast } = useToast();
 
   if (!product) {
+    if (isLoading) {
+      return (
+        <Layout>
+          <div className="container-wide py-28 text-center text-muted-foreground">
+            Loading…
+          </div>
+        </Layout>
+      );
+    }
     return (
       <Layout>
         <div className="container-wide py-28 text-center">
@@ -38,8 +49,8 @@ const ProductDetail = () => {
   }
 
   const inWishlist = isInWishlist(product.id);
-  const relatedProducts = getRelatedProducts(product.id);
-  const collection = collections.find((c) => c.id === product.collection);
+  const relatedProducts = getRelatedProducts(products, product.id);
+  const collection = collections.find((c) => c.slug === product.collection);
 
   const handleWishlistToggle = () => {
     if (inWishlist) {
