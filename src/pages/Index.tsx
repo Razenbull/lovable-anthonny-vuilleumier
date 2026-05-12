@@ -57,11 +57,11 @@ const Index = () => {
       <section ref={heroRef} className="relative h-[100svh] -mt-20 md:-mt-28 overflow-hidden bg-[#000]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_50%,rgba(166,97,58,0.15),transparent_65%)] z-10 pointer-events-none" />
 
-        <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
+        <motion.div className="absolute inset-y-0 right-0 w-full md:w-1/2" style={{ y: heroImageY }}>
           <img
             src={heroImageUrl}
             alt={`Portrait — fine-art ethnic photography by ${s.brandName ?? "Anthonny Vuilleumier"}`}
-            className="w-full h-full object-cover object-right"
+            className="w-full h-full object-cover object-center"
           />
         </motion.div>
 
