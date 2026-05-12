@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
-import { products, collections, getCollectionBySlug } from "@/data/products";
+import { useProducts, useCollections, getCollectionBySlug } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -29,16 +29,15 @@ const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeCollection = searchParams.get("collection") || "all";
   const activeSort = (searchParams.get("sort") as SortOption) || "featured";
+  const { data: products = [] } = useProducts();
+  const { data: collections = [] } = useCollections();
 
   const filteredAndSortedProducts = useMemo(() => {
     let result = [...products];
 
     // Filter by collection
     if (activeCollection !== "all") {
-      const collection = collections.find((c) => c.slug === activeCollection);
-      if (collection) {
-        result = result.filter((product) => product.collection === collection.id);
-      }
+      result = result.filter((product) => product.collection === activeCollection);
     }
 
     // Sort
@@ -62,10 +61,10 @@ const Products = () => {
     }
 
     return result;
-  }, [activeCollection, activeSort]);
+  }, [activeCollection, activeSort, products]);
 
   const currentCollection = activeCollection !== "all"
-    ? getCollectionBySlug(activeCollection)
+    ? getCollectionBySlug(collections, activeCollection)
     : null;
 
   const handleFilterChange = (slug: string) => {

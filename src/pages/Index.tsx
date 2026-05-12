@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
 import { CollectionCard } from "@/components/CollectionCard";
-import { collections, getNewProducts, products } from "@/data/products";
+import { useCollections, useProducts, getNewProducts } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import heroPortraitFallback from "@/assets/hero-portrait.jpg";
 import { getSiteSettings, urlFor, type SiteSettings } from "@/lib/sanity";
@@ -26,8 +26,11 @@ const Index = () => {
     queryFn: getSiteSettings,
   });
 
+  const { data: collections = [] } = useCollections();
+  const { data: products = [] } = useProducts();
+
   const s = settings ?? {};
-  const newProducts = getNewProducts();
+  const newProducts = getNewProducts(products);
   const latestProducts = products.slice(0, 4);
   const displayedCollections = collections.slice(0, 6);
   const featuredCollection = collections[0];
@@ -54,11 +57,11 @@ const Index = () => {
       <section ref={heroRef} className="relative h-[100svh] -mt-20 md:-mt-28 overflow-hidden bg-[#000]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_50%,rgba(166,97,58,0.15),transparent_65%)] z-10 pointer-events-none" />
 
-        <motion.div className="absolute inset-0" style={{ y: heroImageY }}>
+        <motion.div className="absolute inset-y-0 right-0 w-full md:w-1/2" style={{ y: heroImageY }}>
           <img
             src={heroImageUrl}
             alt={`Portrait — fine-art ethnic photography by ${s.brandName ?? "Anthonny Vuilleumier"}`}
-            className="w-full h-full object-cover object-right"
+            className="w-full h-full object-cover object-center"
           />
         </motion.div>
 
@@ -118,6 +121,7 @@ const Index = () => {
       </section>
 
       {/* Featured Collection */}
+      {featuredCollection && (
       <section className="py-20 md:py-28">
         <div className="container-full">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -167,6 +171,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+      )}
 
       {/* Latest Products */}
       <section className="py-20 md:py-28 bg-linen">
@@ -223,24 +228,20 @@ const Index = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
-            <div className="md:col-span-7">
-              <CollectionCard collection={displayedCollections[0]} index={0} variant="wide" />
-            </div>
-            <div className="md:col-span-5">
-              <CollectionCard collection={displayedCollections[1]} index={1} />
-            </div>
-            <div className="md:col-span-4">
-              <CollectionCard collection={displayedCollections[2]} index={2} />
-            </div>
-            <div className="md:col-span-4">
-              <CollectionCard collection={displayedCollections[3]} index={3} />
-            </div>
-            <div className="md:col-span-4">
-              <CollectionCard collection={displayedCollections[4]} index={4} />
-            </div>
-            <div className="md:col-span-12">
-              <CollectionCard collection={displayedCollections[5]} index={5} variant="wide" />
-            </div>
+            {[
+              { span: "md:col-span-7", variant: "wide" as const },
+              { span: "md:col-span-5", variant: undefined },
+              { span: "md:col-span-4", variant: undefined },
+              { span: "md:col-span-4", variant: undefined },
+              { span: "md:col-span-4", variant: undefined },
+              { span: "md:col-span-12", variant: "wide" as const },
+            ].map((slot, i) =>
+              displayedCollections[i] ? (
+                <div key={displayedCollections[i].id} className={slot.span}>
+                  <CollectionCard collection={displayedCollections[i]} index={i} variant={slot.variant} />
+                </div>
+              ) : null
+            )}
           </div>
         </div>
       </section>
