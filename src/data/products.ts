@@ -32,8 +32,8 @@ const COLLECTIONS_QUERY = `*[_type == "collection"] | order(order asc, name asc)
   name,
   "slug": slug.current,
   description,
-  "image": imageUrl,
-  "heroImage": heroImageUrl
+  "image": coalesce(image.asset->url, imageUrl),
+  "heroImage": coalesce(heroImage.asset->url, heroImageUrl, image.asset->url, imageUrl)
 }`;
 
 const PRODUCTS_QUERY = `*[_type == "product"] | order(order asc, name asc) {
@@ -46,7 +46,7 @@ const PRODUCTS_QUERY = `*[_type == "product"] | order(order asc, name asc) {
   longDescription,
   materials,
   dimensions,
-  "images": imageUrls,
+  "images": coalesce(images[].asset->url, imageUrls),
   featured,
   "new": isNew
 }`;
