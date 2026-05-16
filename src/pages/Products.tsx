@@ -177,9 +177,26 @@ const Products = () => {
               ))}
             </div>
 
-            {/* Sorting */}
-            <div className="flex items-center gap-3">
+            {/* Category + Sorting */}
+            <div className="flex items-center gap-3 flex-wrap">
               <span className="text-xs text-muted-foreground tracking-[0.1em] uppercase">
+                Type
+              </span>
+              <Select value={activeCategory} onValueChange={handleCategoryChange}>
+                <SelectTrigger className="w-[170px] rounded-none text-xs tracking-[0.05em] h-9">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all" className="text-xs">All Types</SelectItem>
+                  {PRODUCT_CATEGORIES.map((c) => (
+                    <SelectItem key={c.value} value={c.value} className="text-xs">
+                      {c.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              <span className="text-xs text-muted-foreground tracking-[0.1em] uppercase ml-2">
                 Sort by
               </span>
               <Select value={activeSort} onValueChange={handleSortChange}>
