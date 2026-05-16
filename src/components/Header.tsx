@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-import { Heart, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useWishlist } from "@/hooks/useWishlist";
-import { CartIcon } from "@/components/CartIcon";
 import { useCollections } from "@/data/products";
 import logo from "@/assets/anthonny-vuilleumier-logo.png";
 import {
@@ -14,17 +12,11 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { items } = useWishlist();
   const { data: collections = [] } = useCollections();
 
   useEffect(() => {

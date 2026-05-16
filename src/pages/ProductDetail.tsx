@@ -221,42 +221,28 @@ const ProductDetail = () => {
                 )}
               </div>
 
-              {/* Quantity Selector */}
-              <div className="mb-6">
-                <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground block mb-3">
-                  Quantity
-                </span>
-                <QuantitySelector
-                  quantity={quantity}
-                  onQuantityChange={setQuantity}
-                />
+              {/* Inquiry message */}
+              <div className="mb-8 p-6 bg-accent/40 border-l-2 border-primary">
+                <p className="text-sm text-foreground/80 leading-[1.85] italic font-serif text-lg">
+                  Acquiring a photograph is not merely purchasing an image. It
+                  is choosing a work that will find its place in your world.
+                  Before any acquisition, I favour a personal exchange to guide
+                  you through the choice of format, support and finishings of
+                  your limited edition print.
+                </p>
               </div>
 
-              {/* Actions */}
-              <div className="flex flex-col gap-3">
-                <Button
-                  size="lg"
-                  onClick={handleAddToCart}
-                  className="rounded-none w-full py-6 text-sm tracking-[0.15em] uppercase btn-premium"
-                >
-                  <ShoppingBag className="w-4 h-4 mr-3" />
-                  Add to Bag
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="rounded-none w-full py-6 text-sm tracking-[0.1em] uppercase"
-                  onClick={handleWishlistToggle}
-                >
-                  <Heart
-                    className={cn(
-                      "w-4 h-4 mr-3 transition-all duration-300",
-                      inWishlist && "fill-primary text-primary"
-                    )}
-                  />
-                  {inWishlist ? "Saved to Wishlist" : "Add to Wishlist"}
-                </Button>
-              </div>
+              {/* CTA */}
+              <Button
+                asChild
+                size="lg"
+                className="rounded-none w-full py-6 text-sm tracking-[0.15em] uppercase bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg transition-all"
+              >
+                <Link to={`/inquire?product=${encodeURIComponent(product.name)}`}>
+                  <Mail className="w-4 h-4 mr-3" />
+                  Inquire about this work
+                </Link>
+              </Button>
 
               {/* Trust signals */}
               <div className="mt-10 pt-8 border-t border-border grid grid-cols-2 gap-6">
