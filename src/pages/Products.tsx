@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
-import { useProducts, useCollections, getCollectionBySlug } from "@/data/products";
+import { useProducts, useCollections, getCollectionBySlug, PRODUCT_CATEGORIES } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -28,6 +28,7 @@ const sortOptions: { value: SortOption; label: string }[] = [
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeCollection = searchParams.get("collection") || "all";
+  const activeCategory = searchParams.get("category") || "all";
   const activeSort = (searchParams.get("sort") as SortOption) || "featured";
   const { data: products = [] } = useProducts();
   const { data: collections = [] } = useCollections();
@@ -38,6 +39,11 @@ const Products = () => {
     // Filter by collection
     if (activeCollection !== "all") {
       result = result.filter((product) => product.collection === activeCollection);
+    }
+
+    // Filter by category
+    if (activeCategory !== "all") {
+      result = result.filter((product) => product.category === activeCategory);
     }
 
     // Sort
@@ -61,7 +67,7 @@ const Products = () => {
     }
 
     return result;
-  }, [activeCollection, activeSort, products]);
+  }, [activeCollection, activeCategory, activeSort, products]);
 
   const currentCollection = activeCollection !== "all"
     ? getCollectionBySlug(collections, activeCollection)
@@ -73,6 +79,16 @@ const Products = () => {
       newParams.delete("collection");
     } else {
       newParams.set("collection", slug);
+    }
+    setSearchParams(newParams);
+  };
+
+  const handleCategoryChange = (value: string) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (value === "all") {
+      newParams.delete("category");
+    } else {
+      newParams.set("category", value);
     }
     setSearchParams(newParams);
   };
@@ -161,9 +177,26 @@ const Products = () => {
               ))}
             </div>
 
-            {/* Sorting */}
-            <div className="flex items-center gap-3">
+            {/* Category + Sorting */}
+            <div className="flex items-center gap-3 flex-wrap">
               <span className="text-xs text-muted-foreground tracking-[0.1em] uppercase">
+                Type
+              </span>
+              <Select value={activeCategory} onValueChange={handleCategoryChange}>
+                <SelectTrigger className="w-[170px] rounded-none text-xs tracking-[0.05em] h-9">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all" className="text-xs">All Types</SelectItem>
+                  {PRODUCT_CATEGORIES.map((c) => (
+                    <SelectItem key={c.value} value={c.value} className="text-xs">
+                      {c.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              <span className="text-xs text-muted-foreground tracking-[0.1em] uppercase ml-2">
                 Sort by
               </span>
               <Select value={activeSort} onValueChange={handleSortChange}>

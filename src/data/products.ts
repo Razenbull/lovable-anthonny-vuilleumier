@@ -23,7 +23,14 @@ export interface Product {
   images: string[];
   featured?: boolean;
   new?: boolean;
+  category?: "portrait" | "landscape" | "moment-of-life";
 }
+
+export const PRODUCT_CATEGORIES: { value: NonNullable<Product["category"]>; label: string }[] = [
+  { value: "portrait", label: "Portrait" },
+  { value: "landscape", label: "Landscape" },
+  { value: "moment-of-life", label: "Moment of Life" },
+];
 
 // ---------- Sanity fetchers ----------
 
@@ -48,7 +55,8 @@ const PRODUCTS_QUERY = `*[_type == "product"] | order(order asc, name asc) {
   dimensions,
   "images": coalesce(images[].asset->url, imageUrls),
   featured,
-  "new": isNew
+  "new": isNew,
+  category
 }`;
 
 export async function fetchCollections(): Promise<Collection[]> {
