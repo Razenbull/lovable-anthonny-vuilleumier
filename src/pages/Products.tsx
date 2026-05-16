@@ -28,6 +28,7 @@ const sortOptions: { value: SortOption; label: string }[] = [
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeCollection = searchParams.get("collection") || "all";
+  const activeCategory = searchParams.get("category") || "all";
   const activeSort = (searchParams.get("sort") as SortOption) || "featured";
   const { data: products = [] } = useProducts();
   const { data: collections = [] } = useCollections();
@@ -38,6 +39,11 @@ const Products = () => {
     // Filter by collection
     if (activeCollection !== "all") {
       result = result.filter((product) => product.collection === activeCollection);
+    }
+
+    // Filter by category
+    if (activeCategory !== "all") {
+      result = result.filter((product) => product.category === activeCategory);
     }
 
     // Sort
