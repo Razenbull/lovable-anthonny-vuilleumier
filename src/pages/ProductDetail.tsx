@@ -1,15 +1,11 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, ChevronLeft, ChevronRight, ArrowRight, ShoppingBag } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Mail } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
-import { QuantitySelector } from "@/components/QuantitySelector";
 import { getProductBySlug, getRelatedProducts, useCollections, useProducts } from "@/data/products";
-import { useWishlist } from "@/hooks/useWishlist";
-import { useCart } from "@/hooks/useCart";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
 const ProductDetail = () => {
@@ -18,10 +14,6 @@ const ProductDetail = () => {
   const { data: collections = [] } = useCollections();
   const product = getProductBySlug(products, slug || "");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [quantity, setQuantity] = useState(1);
-  const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlist();
-  const { addItem: addToCart } = useCart();
-  const { toast } = useToast();
 
   if (!product) {
     if (isLoading) {
@@ -48,34 +40,10 @@ const ProductDetail = () => {
     );
   }
 
-  const inWishlist = isInWishlist(product.id);
+  const inWishlist = false;
   const relatedProducts = getRelatedProducts(products, product.id);
   const collection = collections.find((c) => c.slug === product.collection);
-
-  const handleWishlistToggle = () => {
-    if (inWishlist) {
-      removeFromWishlist(product.id);
-      toast({
-        title: "Removed from wishlist",
-        description: `${product.name} has been removed from your wishlist.`,
-      });
-    } else {
-      addToWishlist(product);
-      toast({
-        title: "Added to wishlist",
-        description: `${product.name} has been saved to your wishlist.`,
-      });
-    }
-  };
-
-  const handleAddToCart = () => {
-    addToCart(product, quantity);
-    toast({
-      title: "Added to bag",
-      description: `${quantity} × ${product.name} added to your bag.`,
-    });
-    setQuantity(1);
-  };
+  void inWishlist;
 
   const nextImage = () => {
     setCurrentImageIndex((prev) =>
