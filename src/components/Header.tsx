@@ -176,7 +176,7 @@ export const Header = () => {
                 </div>
                 <div className="pt-6 border-t border-border space-y-1">
                   {[
-                  �{ to: "/products", label: "Prints" },
+                    { to: "/products", label: "Prints" },
                     { to: "/about", label: "About" },
                     { to: "/inquire", label: "Inquire" },
                   ].map((link, i) => (
