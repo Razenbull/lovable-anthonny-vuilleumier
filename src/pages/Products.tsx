@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
-import { useProducts, useCollections, getCollectionBySlug } from "@/data/products";
+import { useProducts, useCollections, getCollectionBySlug, PRODUCT_CATEGORIES } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import {
   Select,
