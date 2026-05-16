@@ -55,7 +55,8 @@ const PRODUCTS_QUERY = `*[_type == "product"] | order(order asc, name asc) {
   dimensions,
   "images": coalesce(images[].asset->url, imageUrls),
   featured,
-  "new": isNew
+  "new": isNew,
+  category
 }`;
 
 export async function fetchCollections(): Promise<Collection[]> {
