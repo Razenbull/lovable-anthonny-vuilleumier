@@ -67,7 +67,7 @@ const Products = () => {
     }
 
     return result;
-  }, [activeCollection, activeSort, products]);
+  }, [activeCollection, activeCategory, activeSort, products]);
 
   const currentCollection = activeCollection !== "all"
     ? getCollectionBySlug(collections, activeCollection)
@@ -79,6 +79,16 @@ const Products = () => {
       newParams.delete("collection");
     } else {
       newParams.set("collection", slug);
+    }
+    setSearchParams(newParams);
+  };
+
+  const handleCategoryChange = (value: string) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (value === "all") {
+      newParams.delete("category");
+    } else {
+      newParams.set("category", value);
     }
     setSearchParams(newParams);
   };
