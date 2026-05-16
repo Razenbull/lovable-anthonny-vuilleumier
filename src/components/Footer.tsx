@@ -93,10 +93,10 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/cart"
+                  to="/inquire"
                   className="text-sm text-background/60 hover:text-background transition-colors duration-300"
                 >
-                  Shopping Bag
+                  Inquire
                 </Link>
               </li>
             </ul>
